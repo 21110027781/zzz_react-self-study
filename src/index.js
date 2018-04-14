@@ -6,23 +6,22 @@ import './index.css';
 import './App.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore } from 'redux';
+import appReducers from './reducers/indexReducer'
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-
-var initialState = {
-    status: false
-};
-
-var reducer = (state = initialState, action) => {
-    return state;
-}
-
-const store = createStore(reducer);
-console.log(store.getState())
+const store = createStore(
+    appReducers,
+    applyMiddleware(thunk)
+);
+// console.log(store.getState())
 
 
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );
 registerServiceWorker();
