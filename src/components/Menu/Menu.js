@@ -19,8 +19,8 @@ const Menus = [
 	},
 	{
 		name: 'Quản lý',
-		to: '/',
-		exact: true
+		to: '/manage-product',
+		exact: false
 	}
 ];
 
