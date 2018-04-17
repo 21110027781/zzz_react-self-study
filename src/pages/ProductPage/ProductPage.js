@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actFetchProductsRequest } from './../../actions/indexActions';
 import ProductList from './../../components/ProductList/ProductList';
 import CategoryList from './../../components/CategoryList/CategoryList';
+import { Grid } from 'semantic-ui-react';
 
 
 class ProductPage extends Component {
@@ -30,17 +31,28 @@ class ProductPage extends Component {
     render() {
         var { products } = this.props;
         return (
-            <div className="row">
-                <div className="col-3">
-                    <CategoryList />
-                </div>
-                <div className="col-9">
-                    <ProductList>
-                        {this.showProducts(products)}
-                    </ProductList>
-                </div>
+            <Grid container>
+                <Grid.Row>
+                    <Grid.Column width={3}>
+                        <CategoryList />
+                    </Grid.Column>
+                    <Grid.Column width={13}>
+                        <ProductList>
+                            {this.showProducts(products)}
+                        </ProductList>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            // <div className="row">
+            //     <div className="col-3">
 
-            </div>
+            //     </div>
+            //     <div className="col-9">
+            //         <ProductList>
+            //             {this.showProducts(products)}
+            //         </ProductList>
+            //     </div>
+            // </div>
         );
     }
 }

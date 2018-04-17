@@ -13,3 +13,6 @@
 #navbarColor01 .d-flex{
     color: #FFF;
 }
+.no-radius{
+    border-radius: 0 !important;
+}

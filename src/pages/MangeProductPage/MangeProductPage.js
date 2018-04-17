@@ -6,11 +6,17 @@ import ProductItemManage from './../../components/ProductItem/ProductItemManage'
 
 
 
-
 class MangeProductPage extends Component {
+
+
 
     componentDidMount() {
         this.props.fetchAllProducts();
+    }
+    //e, { activePage }
+    handlePaginationChange = (a, b) => {
+        this.props.optionPaging.activePage = b.activePage;
+        console.log(this.props.optionPaging.activePage);
     }
 
     onDelete = (id) => {
@@ -35,15 +41,11 @@ class MangeProductPage extends Component {
     }
 
     render() {
-        let { products } = this.props;
+        let { products, optionPaging } = this.props;
         return (
-            <div className="row">
-                <div className="col-12">
-                    <ProductListManage>
-                        {this.showProducts(products)}
-                    </ProductListManage>
-                </div>
-            </div>
+            <ProductListManage optionPaging={optionPaging} handlePaginationChange={this.handlePaginationChange}>
+                {this.showProducts(products)}
+            </ProductListManage>
         );
     }
 }
@@ -51,7 +53,17 @@ class MangeProductPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        products: state.productsReducer
+        products: state.productsReducer,
+
+        optionPaging: {
+            activePage: 5,
+            boundaryRange: 1,
+            siblingRange: 1,
+            showEllipsis: true,
+            showFirstAndLastNav: true,
+            showPreviousAndNextNav: true,
+            totalPages: 50,
+        }
     };
 }
 

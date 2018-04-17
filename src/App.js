@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu/Menu';
+import NavbarMenu from './components/Menu/NavbarMenu';
 import routes from './routes';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
@@ -27,8 +27,8 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="App">
-					<Menu />
-					<div className="container m-t-15">
+					<NavbarMenu />
+					<div className="m-t-15">
 						{this.showContentMenu(routes)}
 					</div>
 				</div>
