@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Table, Pagination } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { pagingTask } from './../../actions/indexActions';
+
 
 class ProductListManage extends Component {
 
-    
-
-
-    
-
     render() {
-        const {
+        let {
             activePage,
             boundaryRange,
             siblingRange,
@@ -41,7 +39,7 @@ class ProductListManage extends Component {
                                 <Pagination
                                     activePage={activePage}
                                     boundaryRange={boundaryRange}
-                                    onPageChange={(e, activePage) => this.props.handlePaginationChange(e,activePage)}
+                                    onPageChange={(e, data) => this.props.changePaging(e, data)}
                                     size='mini'
                                     siblingRange={siblingRange}
                                     totalPages={totalPages}
@@ -57,22 +55,23 @@ class ProductListManage extends Component {
                     </Table.Footer>
                 </Table>
             </Container>
-            // <table className="table table-striped table-dark">
-            //     <thead>
-            //         <tr>
-            //             <th scope="col">#</th>
-            //             <th scope="col">Hình ảnh</th>
-            //             <th scope="col">Tên sản phẩm</th>
-            //             <th scope="col">Mô tả</th>
-            //             <th scope="col">Action</th>
-            //         </tr>
-            //     </thead>
-            //     <tbody>
-            //         {this.props.children}
-            //     </tbody>
-            // </table>
         );
     }
 }
 
-export default ProductListManage;
+
+const  mapStateToProps = (state) => {
+    return {
+        optionPaging: state.pagingProductReducer
+    };
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        changePaging: (event, optionPaging) => {
+            dispatch(pagingTask(optionPaging));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListManage);

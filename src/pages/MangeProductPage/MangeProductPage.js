@@ -7,16 +7,36 @@ import ProductItemManage from './../../components/ProductItem/ProductItemManage'
 
 
 class MangeProductPage extends Component {
+    
 
-
-
-    componentDidMount() {
-        this.props.fetchAllProducts();
+    componentWillMount() {
+        console.log('Component WILL MOUNT!')
     }
-    //e, { activePage }
-    handlePaginationChange = (a, b) => {
-        this.props.optionPaging.activePage = b.activePage;
-        console.log(this.props.optionPaging.activePage);
+    componentDidMount() {
+        let { optionPaging } = this.props;
+        this.props.fetchAllProducts(optionPaging.activePage, optionPaging.limitItem);
+        console.log('component DID MOUNT')
+    }
+    componentWillReceiveProps(newProps) {
+        console.log('Component WILL RECIEVE PROPS!')
+        if(newProps){
+            console.log(newProps);
+            //this.props.fetchAllProducts(newProps.optionPaging.activePage);
+        }
+    }
+    shouldComponentUpdate(newProps, newState) {
+        console.log('should Component Update')
+        //this.props.fetchAllProducts(newProps.optionPaging.activePage, newProps.optionPaging.limitItem);
+        return true;
+    }
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Component WILL UPDATE!');
+    }
+    componentDidUpdate(prevProps, prevState) {
+        console.log('Component DID UPDATE!')
+    }
+    componentWillUnmount() {
+        console.log('Component WILL UNMOUNT!')
     }
 
     onDelete = (id) => {
@@ -41,9 +61,10 @@ class MangeProductPage extends Component {
     }
 
     render() {
-        let { products, optionPaging } = this.props;
+        let { products } = this.props;
+        console.log('test')
         return (
-            <ProductListManage optionPaging={optionPaging} handlePaginationChange={this.handlePaginationChange}>
+            <ProductListManage>
                 {this.showProducts(products)}
             </ProductListManage>
         );
@@ -54,23 +75,14 @@ class MangeProductPage extends Component {
 function mapStateToProps(state) {
     return {
         products: state.productsReducer,
-
-        optionPaging: {
-            activePage: 5,
-            boundaryRange: 1,
-            siblingRange: 1,
-            showEllipsis: true,
-            showFirstAndLastNav: true,
-            showPreviousAndNextNav: true,
-            totalPages: 50,
-        }
+        optionPaging: state.pagingProductReducer
     };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        fetchAllProducts: () => {
-            dispatch(actFetchProductsRequest());
+        fetchAllProducts: (page, limit) => {
+            dispatch(actFetchProductsRequest(page, limit));
         },
         onDeleteProduct: (id) => {
             dispatch(actDeleteProductRequest(id));
