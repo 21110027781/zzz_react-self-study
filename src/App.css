@@ -1,6 +1,9 @@
 .navbar-dark .navbar-brand {
     color: #fff !important;
 }
+.m-l-5{
+    margin-left: 5px;
+}
 .m-t-15{
     margin-top: 15px;
 }
@@ -9,4 +12,7 @@
 }
 #navbarColor01 .d-flex{
     color: #FFF;
+}
+.no-radius{
+    border-radius: 0 !important;
 }

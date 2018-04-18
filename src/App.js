@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu/Menu';
-import CategoryList from './components/CategoryList/CategoryList';
-import ProductList from './components/ProductList/ProductList';
+import NavbarMenu from './components/Menu/NavbarMenu';
+import routes from './routes';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+
+
+
 
 class App extends Component {
+	showContentMenu = (routes) => {
+		var result = null;
+		if (routes.length > 0) {
+			result = routes.map((route, index) => {
+				return (
+					<Route
+						key={index}
+						path={route.path}
+						exact={route.exact}
+						component={route.main}
+					/>
+				)
+			});
+		}
+		return <Switch>{result}</Switch>
+	}
 	render() {
 		return (
-			<div className="App">
-				<Menu />
-				<div className="container m-t-15">
-					<div className="row">
-						<div className="col-3">
-							<CategoryList />
-						</div>
-						<div className="col-9">
-							<ProductList />
-						</div>
+			<Router>
+				<div className="App">
+					<NavbarMenu />
+					<div className="m-t-15">
+						{this.showContentMenu(routes)}
 					</div>
 				</div>
-			</div>
+			</Router>
 		);
 	}
 }

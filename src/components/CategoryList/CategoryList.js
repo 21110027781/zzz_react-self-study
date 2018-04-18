@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-
+import { Segment } from 'semantic-ui-react';
 
 class CategoryList extends Component {
     render() {
         return (
-            <div>
-                <ul className="list-group">
-                    <li className="list-group-item active">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Morbi leo risus</li>
-                    <li className="list-group-item">Porta ac consectetur ac</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div>
+            <Segment.Group>
+                <Segment>Máy ảnh</Segment>
+                <Segment>Máy ảnh</Segment>
+                <Segment>Đồ gia dụng</Segment>
+                <Segment>Phụ kiện</Segment>
+                <Segment>Sạc dự phòng</Segment>
+            </Segment.Group>
         );
     }
 }
