@@ -1,18 +1,51 @@
 .navbar-dark .navbar-brand {
     color: #fff !important;
 }
-.m-l-5{
+
+.m-l-5 {
     margin-left: 5px;
 }
-.m-t-15{
+
+.m-t-15 {
     margin-top: 15px;
 }
-.row-product .col-sm-6{
+
+.row-product .col-sm-6 {
     margin-bottom: 15px;
 }
-#navbarColor01 .d-flex{
+
+#navbarColor01 .d-flex {
     color: #FFF;
 }
-.no-radius{
+
+.no-radius {
     border-radius: 0 !important;
 }
+
+/* fix modal display center page */
+
+.visible.transition.modals {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+.visible.transition.modal {
+    margin-top: 0px !important;
+}
+ /* or */
+/* .dimmed.dimmable>.ui.animating.dimmer,
+.dimmed.dimmable>.ui.visible.dimmer,
+.ui.active.dimmer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui.modal,
+.ui.active.modal {
+    margin: 0 auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform-origin: center !important;
+    transition: all ease .5s;
+} */
+/* ./ fix modal display center page */

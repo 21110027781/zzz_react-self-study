@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Table, Pagination } from 'semantic-ui-react';
+import { Container, Table, Pagination} from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { pagingTask } from './../../actions/indexActions';
-
+import { actFetchProductsRequest } from './../../actions/indexActions';
 
 class ProductListManage extends Component {
 
@@ -18,12 +17,14 @@ class ProductListManage extends Component {
         } = this.props.optionPaging;
         return (
             <Container>
-                <Table celled>
+                <Table celled inverted selectable striped>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>#</Table.HeaderCell>
+                            <Table.HeaderCell>ID</Table.HeaderCell>
                             <Table.HeaderCell>Hình ảnh</Table.HeaderCell>
                             <Table.HeaderCell>Tên sản phẩm</Table.HeaderCell>
+                            <Table.HeaderCell>Giá</Table.HeaderCell>
                             <Table.HeaderCell>Mô tả</Table.HeaderCell>
                             <Table.HeaderCell>Action</Table.HeaderCell>
                         </Table.Row>
@@ -35,11 +36,11 @@ class ProductListManage extends Component {
 
                     <Table.Footer>
                         <Table.Row>
-                            <Table.HeaderCell colSpan='5'>
+                            <Table.HeaderCell colSpan='7'>
                                 <Pagination
                                     activePage={activePage}
                                     boundaryRange={boundaryRange}
-                                    onPageChange={(e, data) => this.props.changePaging(e, data)}
+                                    onPageChange={(e, data) => this.props.onPageChange(data)}
                                     size='mini'
                                     siblingRange={siblingRange}
                                     totalPages={totalPages}
@@ -60,17 +61,18 @@ class ProductListManage extends Component {
 }
 
 
-const  mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
-        optionPaging: state.pagingProductReducer
+        //optionPaging: state.pagingProductReducer
     };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        changePaging: (event, optionPaging) => {
-            dispatch(pagingTask(optionPaging));
+        fetchAllProducts: (page, limit) => {
+            dispatch(actFetchProductsRequest(page, limit));
         }
+
     }
 }
 

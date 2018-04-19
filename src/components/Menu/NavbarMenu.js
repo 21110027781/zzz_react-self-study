@@ -88,6 +88,11 @@ class NavbarMenu extends Component {
 			<Menu inverted className="no-radius">
 				<Container>
 					{this.showMenus(Menus)}
+					<Menu.Menu position='right'>
+						<Menu.Item>
+							Giỏ hàng 0 sản phẩm
+						</Menu.Item>
+					</Menu.Menu>
 				</Container>
 			</Menu>
 
