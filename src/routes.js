@@ -3,6 +3,8 @@ import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import MangeProductPage from './pages/MangeProductPage/MangeProductPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+
 
 const routes = [
     {
@@ -24,6 +26,11 @@ const routes = [
         path: '/manage-product',
         exact: false,
         main: () => <MangeProductPage />
+    },
+    {
+        path: '',
+        exact: true,
+        main: () => <NotFoundPage />
     }
 ];
 

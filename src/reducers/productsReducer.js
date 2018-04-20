@@ -14,7 +14,6 @@ const productsReducer = (state = initialState, action) => {
             state.splice(index, 1);
             return [...state];
         case types.ADD_PRODUCT:
-            // state.push(action.product);
             return [...state];
         case types.UPDATE_PRODUCT:
             index = _.findIndex(state, function(o){return o.id === action.product.id});

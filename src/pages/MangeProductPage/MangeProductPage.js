@@ -147,7 +147,7 @@ class MangeProductPage extends Component {
         } else {
             this.props.onAddProduct(product);
         }
-        this.props.onCloseModal();
+        this.onCloseModalEditProduct();
     }
 
     handleSearchDebounce = (e) => {

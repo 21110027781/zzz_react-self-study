@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import { connect } from 'react-redux';
-import { actFetchProductsRequest } from './../../actions/indexActions';
+import { actFetchProductsRequest, actAddToCart } from './../../actions/indexActions';
 import ProductList from './../../components/ProductList/ProductList';
 import CategoryList from './../../components/CategoryList/CategoryList';
 import { Grid } from 'semantic-ui-react';
@@ -14,6 +14,7 @@ class ProductPage extends Component {
 
     showProducts = (products) => {
         var result = null;
+        let { onAddToCart } = this.props;
         if (products.length > 0) {
             result = products.map((product, index) => {
                 return (
@@ -21,6 +22,7 @@ class ProductPage extends Component {
                         key={index}
                         product={product}
                         index={index}
+                        onAddToCart={onAddToCart}
                     />
                 );
             })
@@ -43,16 +45,6 @@ class ProductPage extends Component {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            // <div className="row">
-            //     <div className="col-3">
-
-            //     </div>
-            //     <div className="col-9">
-            //         <ProductList>
-            //             {this.showProducts(products)}
-            //         </ProductList>
-            //     </div>
-            // </div>
         );
     }
 }
@@ -67,6 +59,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchAllProducts: () => {
             dispatch(actFetchProductsRequest());
+        },
+        onAddToCart: (product) => {
+            dispatch(actAddToCart(product));
         }
     }
 }

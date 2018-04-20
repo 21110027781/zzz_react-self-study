@@ -145,3 +145,12 @@ export const closeModalEditProduct = () => {
         type: types.CLOSE_MODAL_EDIT_PRODUCT
     }
 }
+
+
+export const actAddToCart = (product) => {
+    return {
+        type: types.ADD_TO_CART,
+        product,
+        quantity: 1
+    }
+}

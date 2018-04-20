@@ -15,7 +15,7 @@ class ProductItem extends Component {
                         <Card.Description>
                             {product.description}
                         </Card.Description>
-                        <Button>Add To Cart</Button>
+                        <Button onClick={() => this.props.onAddToCart(product)}>Add To Cart</Button>
                     </Card.Content>
                 </Card>
             </Grid.Column>
