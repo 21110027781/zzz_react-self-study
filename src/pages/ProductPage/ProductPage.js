@@ -15,6 +15,9 @@ class ProductPage extends Component {
     showProducts = (products) => {
         var result = null;
         let { onAddToCart } = this.props;
+        let { match } = this.props;
+        let url = match.url;
+
         if (products.length > 0) {
             result = products.map((product, index) => {
                 return (
@@ -23,6 +26,7 @@ class ProductPage extends Component {
                         product={product}
                         index={index}
                         onAddToCart={onAddToCart}
+                        urlTo={`${url}/${product.id}`}
                     />
                 );
             })

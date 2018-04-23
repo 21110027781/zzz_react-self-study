@@ -4,8 +4,7 @@ import ProductPage from './pages/ProductPage/ProductPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import MangeProductPage from './pages/MangeProductPage/MangeProductPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-
-
+import CartPage from './pages/CartPage/CartPage';
 const routes = [
     {
         path: '/',
@@ -15,7 +14,7 @@ const routes = [
     {
         path: '/products',
         exact: false,
-        main: () => <ProductPage />
+        main: ({match, location}) => <ProductPage match={match} location={location} />
     },
     {
         path: '/contact',
@@ -26,6 +25,11 @@ const routes = [
         path: '/manage-product',
         exact: false,
         main: () => <MangeProductPage />
+    },
+    {
+        path: '/cart',
+        exact: false,
+        main: () => <CartPage />
     },
     {
         path: '',
