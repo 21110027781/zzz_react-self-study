@@ -9,15 +9,17 @@ import { Grid } from 'semantic-ui-react';
 
 class ProductPage extends Component {
     componentDidMount() {
+        console.log(this.props.match, this.props.location);
         this.props.fetchAllProducts();
     }
+    
 
     showProducts = (products) => {
         var result = null;
         let { onAddToCart } = this.props;
         let { match } = this.props;
         let url = match.url;
-
+        
         if (products.length > 0) {
             result = products.map((product, index) => {
                 return (

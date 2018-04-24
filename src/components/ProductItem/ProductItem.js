@@ -6,7 +6,6 @@ import ProductDetaiItem from './ProductDetaiItem';
 class ProductItem extends Component {
     render() {
         var { product, urlTo } = this.props;
-        console.log(urlTo)
         return (
             <Grid.Column>
                 <Route path="/products/:id" component={ProductDetaiItem} />
