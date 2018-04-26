@@ -5,6 +5,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import MangeProductPage from './pages/MangeProductPage/MangeProductPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import CartPage from './pages/CartPage/CartPage';
+
 const routes = [
     {
         path: '/',

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/semantic-ui-css/semantic.min.css';
+import '../node_modules/react-select/dist/react-select.css';
 import './index.css';
 import './App.css';
 import App from './App';
