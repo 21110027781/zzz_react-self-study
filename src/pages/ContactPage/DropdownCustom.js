@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-
+import ErrorMessage from './ErrorFormik';
 
 const options = [
     { value: "Food", label: "Food" },
@@ -36,10 +36,12 @@ class DropdownCustom extends Component {
                 />
                 {!!this.props.error &&
                     this.props.touched && (
-                        <div style={{ color: "red", marginTop: ".5rem" }}>
-                            {this.props.error}
-                        </div>
+                        <ErrorMessage name="topics" />
                     )}
+
+                {/*<div style={{ color: "red", marginTop: ".5rem" }}>
+                    {this.props.error}
+                </div>*/}
             </div>
         );
     }

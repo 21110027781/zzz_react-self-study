@@ -117,6 +117,7 @@ const MyForm = props => {
                                 error={errors.topicsSemantic}
                                 touched={touched.topicsSemantic}
                             />
+                            <ErrorMessage name="topicsSemantic" />
                         </div>
                         <div className="field">
                             <DropdownCustom
@@ -126,7 +127,7 @@ const MyForm = props => {
                                 error={errors.topics}
                                 touched={touched.topics}
                             />
-
+                            
                             {/* <Dropdown fluid selection options={stateOptions}></Dropdown> */}
                         </div>
                         <div className="field">
@@ -194,6 +195,7 @@ const MyEnhancedForm = withFormik({
             .lessThan(10, "Nhập số nhỏ hơn hoặc bằng ${less}"), // eslint-disable-line
         txtOnlyText_1: yup.string().matches(/^([A-Za-z])*$/, 'Chỉ được nhập chữ'),
         txtTextAndNumber: yup.string().matches(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, 'Bắt buộc nhập chữ và số'),
+        topicsSemantic: yup.array().min(1, 'Pick at least 1 tag'),
         topics: yup.array()
             .min(3, "Pick at least 3 tags")
             .of(
