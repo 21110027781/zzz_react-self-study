@@ -25,11 +25,6 @@ const menus = [
 		exact: false
 	},
 	{
-		name: 'Đăng nhập',
-		to: '/login',
-		exact: false
-	},
-	{
 		name: 'Giỏ hàng',
 		to: '/cart',
 		exact: false

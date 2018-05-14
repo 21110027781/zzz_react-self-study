@@ -21,6 +21,9 @@ class Cart extends Component {
                 <Menu.Item as={Link} to='/cart' name='cart' className={this.props.activeClass}>
                     Giỏ hàng có {this.countItemInCart(this.props.itemCarts)} sản phẩm
                 </Menu.Item>
+                <Menu.Item as={Link} to='/login' name='login'>
+                    Login
+                </Menu.Item>
             </Menu.Menu>
         );
     }

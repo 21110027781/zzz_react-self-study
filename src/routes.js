@@ -6,7 +6,7 @@ import MangeProductPage from './pages/MangeProductPage/MangeProductPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import CartPage from './pages/CartPage/CartPage';
 import Login from './pages/Login/Login';
-
+import Register from './pages/Register/Register';
 
 const routes = [
     {
@@ -18,6 +18,11 @@ const routes = [
         path: '/login',
         exact: false,
         main: () => <Login />
+    },
+    {
+        path: '/register',
+        exact: false,
+        main: () => <Register />
     },
     {
         path: '/products',
