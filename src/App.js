@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MenuNavBar from './components/Menu/NavbarMenu';
 import routes from './routes';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import firebase from './firebase.js';
 
 
 
